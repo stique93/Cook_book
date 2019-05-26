@@ -5,51 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VK API TEST</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Cook book</title>
 </head>
 
 <body>
-    <div id="app">
-        {{message}}
-    </div>
-    <div id="app-2">
-        <span v-bind:title='message'>
-            Наведите на меня курсор на пару секунд,
-            чтобы увидеть динамически связанное значение Title!
-        </span>
-    </div>
-    <div id="app-3">
-        <span v-if='seen'>
-            Сейчас меня видно
-        </span>
-    </div>
-    <div id="app-4">
-        <ol>
-            <li v-for='todo in todos'>
-                {{todo.text}}
-            </li>
-        </ol>
-    </div>
-    <div id="app-5">
-        <p>{{message}}</p>
-        <button v-on:click='reverseMessage'>Перевернуть сообщение</button>
-    </div>
-    <div id="app-6">
-        <p>{{ message }}</p>
-        <input v-model="message">
-    </div>
-    <div id="app-7">
-        <ol>
-            <todo-item
-                v-for="item in groceryList"
-                v-bind:todo="item"
-                v-bind:key="item.id"
-            ></todo-item>
-        </ol>
+    <div class="container pt-5">
+        <div class="row mb-3">
+            <div class="col">
+                <h1>Cook book</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="search">Find your dish</label>
+                    <input type="text" class="form-control" id="search" placeholder="Enter dish name">
+                </div>
+                <hr>
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action pointer">Пельмени</li>
+                    <li class="list-group-item list-group-item-action pointer">Пельмени</li>
+                    <li class="list-group-item list-group-item-action pointer">Пельмени</li>
+                </ul>
+            </div>
+            <div class="col-md-8 pt-3">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>Пельмени</h2>
+                        <img src="images/pelmeny.jpg" alt="" class="rounded detail-dish-img">
+                    </div>
+                    <div class="col-md-7 pt-2">
+                        <h5>КБЖУ</h5>
+                        <ul>
+                            <li>Калории, ккал: <strong>275</strong></li>
+                            <li>Белки, г: <strong>11.9</strong></li>
+                            <li>Жиры, г: <strong>12.4</strong></li>
+                            <li>Углеводы, г: <strong>29.0</strong></li>
+                        </ul>
+                        <p>Промокод <strong>SUGAR</strong></p>
+
+                        <button class="btn btn-primary mr-3">Заказать</button>
+                        <button class="btn btn-outline-success">Показать промокод</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="../vue.js"></script>
-    <script src="script/script.js"></script>
 </body>
 
 </html>
