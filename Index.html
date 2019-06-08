@@ -27,27 +27,34 @@
                 <hr>
 
                 <ul class="list-group">
-                    <li v-for="dish in dishes" class="list-group-item list-group-item-action pointer">{{dish.name}}</li>
+                    <li 
+                        v-for="(dish,index) in dishes" 
+                        class="list-group-item list-group-item-action pointer"
+                        v-on:click="selectDish(index)"
+                        :class="{'active': selectedDishIndex===index}"
+                    >
+                    {{dish.name}}
+                    </li>
                 </ul>
             </div>
             <div class="col-md-8 pt-3">
                 <div class="row">
                     <div class="col-md-5">
-                        <h2>Пельмени</h2>
-                        <img src="images/pelmeny.jpg" alt="" class="rounded detail-dish-img">
+                        <h2>{{dish.name}}</h2>
+                        <img :src="dish.image" :alt="dish.name" class="rounded detail-dish-img">
                     </div>
                     <div class="col-md-7 pt-2">
                         <h5>КБЖУ</h5>
                         <ul>
-                            <li>Калории, ккал: <strong>275</strong></li>
-                            <li>Белки, г: <strong>11.9</strong></li>
-                            <li>Жиры, г: <strong>12.4</strong></li>
-                            <li>Углеводы, г: <strong>29.0</strong></li>
+                            <li>Калории, ккал: <strong>{{dish.calories}}</strong></li>
+                            <li>Белки, г: <strong>{{dish.protein}}</strong></li>
+                            <li>Жиры, г: <strong>{{dish.fat}}</strong></li>
+                            <li>Углеводы, г: <strong>{{dish.carbohydrate}}</strong></li>
                         </ul>
-                        <p>Промокод <strong>SUGAR</strong></p>
+                        <p v-if="promoVisibility">Промокод <strong>{{dish.promo}}</strong></p>
 
                         <button class="btn btn-primary mr-3">Заказать</button>
-                        <button class="btn btn-outline-success">Показать промокод</button>
+                        <button class="btn btn-outline-success" v-on:click="promoVisibility = !promoVisibility">Показать промокод</button>
                     </div>
                 </div>
             </div>
